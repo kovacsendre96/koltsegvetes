@@ -1,0 +1,436 @@
+/**********************************************
+*** Általános
+**********************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    color: #555;
+    font-family: Open Sans;
+    font-size: 16px;
+    position: relative;
+    height: 100vh;
+    font-weight: 400;
+}
+
+.right {
+    float: right;
+}
+.red {
+    color: #ff5049 !important;
+}
+.red-focus:focus,
+.selected-item.value.active:focus,
+.selected-item.title.active:focus{
+    border: 1px solid #ff5049 !important;
+}
+
+/**********************************************
+*** FELSŐ SZAKASZ
+**********************************************/
+
+.top {
+    height: 40vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.koltsegvetes {
+    position: absolute;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.koltsegvetes__cim {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.koltsegvetes__ertek {
+    font-weight: 300;
+    font-size: 46px;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.koltsegvetes__bevetelek,
+.koltsegvetes__kiadasok {
+    padding: 12px;
+    text-transform: uppercase;
+}
+
+.koltsegvetes__bevetelek {
+    margin-bottom: 10px;
+    background-color: #28b9b5;
+}
+
+.koltsegvetes__kiadasok {
+    background-color: #ff5049;
+}
+
+.koltsegvetes__bevetelek--szoveg,
+.koltsegvetes__kiadasok--szoveg {
+    float: left;
+    font-size: 13px;
+    color: #444;
+    margin-top: 2px;
+}
+
+.koltsegvetes__bevetelek--ertek,
+.koltsegvetes__kiadasok--ertek {
+    letter-spacing: 1px;
+    float: left;
+}
+
+.koltsegvetes__bevetelek--szazalek,
+.koltsegvetes__kiadasok--szazalek {
+    float: left;
+    width: 34px;
+    font-size: 11px;
+    padding: 3px 0;
+    margin-left: 10px;
+}
+
+.koltsegvetes__kiadasok--szazalek {
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    border-radius: 3px;
+}
+
+
+/**********************************************
+*** ALSÓ SZAKASZ
+**********************************************/
+
+/***** FORM *****/
+.hozzaad {
+    padding: 14px;
+    border-bottom: 1px solid #e7e7e7;
+    background-color: #f7f7f7;
+}
+
+.hozzaad__kontener {
+    margin: 0 auto;
+    text-align: center;
+   
+}
+
+.hozzaad__tipus {
+    width: 55px;
+    border: 1px solid #e7e7e7;
+    height: 44px;
+    font-size: 18px;
+    color: inherit;
+    background-color: #fff;
+    margin-right: 10px;
+    font-weight: 300;
+    transition: border 0.3s;
+}
+.months{
+    width: 150px;
+    margin-left: 25px!important;
+}
+.new-month-wrapper{
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+.hozzaad__leiras,
+.hozzaad__ertek,
+.selected-item,
+.months,.modal-select {
+    border: 1px solid #e7e7e7;
+    background-color: #fff;
+    color: inherit;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 12px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: border 0.3s;
+}
+
+.hozzaad__leiras {
+    width: 400px;
+}
+.hozzaad__ertek {
+    width: 100px;
+}
+
+.hozzaad__gomb,.new-month,.modal-close,.modal-accept {
+    font-size: 35px;
+    background: none;
+    border: none;
+    color: #28b9b5;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.1;
+    margin-left: 10px;
+}
+
+.hozzaad__gomb:active,.new-month:active,.modal-accept:active {
+    transform: translateY(2px);
+}
+
+.hozzaad__tipus:focus,
+.hozzaad__leiras:focus,
+.hozzaad__ertek:focus,
+.selected-item:focus,.months:focus,.modal-select:focus {
+    outline: none;
+    border: 1px solid #28b9b5;
+}
+
+.hozzaad__gomb:focus {
+    outline: none;
+}
+.hibauzenet-container {
+    padding: 5px;
+    position: relative;
+}
+.hozzaad__leiras__small,
+.hozzaad__ertek__small {
+    visibility: hidden;
+    position: absolute;
+    color: #ff5049;
+}
+.hozzaad__leiras__small {
+    left: 510px;
+}
+.hozzaad__ertek__small {
+    left: 925px;
+}
+
+/***** LISTÁK *****/
+.kontener {
+    width: 1000px;
+    margin: 60px auto;
+}
+
+.bevetelek {
+    float: left;
+    width: 475px;
+    margin-right: 50px;
+}
+
+.kiadasok {
+    float: left;
+    width: 475px;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.bevetelek__cim {
+    color: #28b9b5;
+}
+.kiadasok__cim {
+    color: #ff5049;
+}
+
+.tetel {
+    padding: 13px;
+    border-bottom: 1px solid #e7e7e7;
+    cursor: pointer;
+}
+.tetel__ertek-wrapper.hide,
+.tetel__leiras.hide {
+    display: none;
+}
+
+.tetel:first-child {
+    border-top: 1px solid #e7e7e7;
+}
+.tetel:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.tetel__leiras {
+    float: left;
+}
+
+.tetel__ertek {
+    float: left;
+    transition: transform 0.3s;
+}
+
+.tetel__szazalek {
+    float: left;
+    margin-left: 20px;
+    transition: transform 0.3s;
+    font-size: 11px;
+    background-color: #ffdad9;
+    padding: 3px;
+    border-radius: 3px;
+    width: 32px;
+    text-align: center;
+}
+
+.bevetelek .tetel__ertek,
+.bevetelek .tetel__torol--gomb {
+    color: #28b9b5;
+}
+
+.kiadasok .tetel__ertek,
+.kiadasok .tetel__szazalek,
+.kiadasok .tetel__torol--gomb {
+    color: #ff5049;
+}
+
+.tetel__torol {
+    float: left;
+}
+
+.tetel__torol--gomb {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: none;
+}
+
+.tetel__torol--gomb:focus {
+    outline: none;
+}
+.tetel__torol--gomb:active,.modal-close:active {
+    transform: translateY(2px);
+}
+
+.tetel:hover .tetel__torol--gomb {
+    display: block;
+}
+.tetel:hover .tetel__ertek {
+    transform: translateX(-20px);
+}
+.tetel:hover .tetel__szazalek {
+    transform: translateX(-20px);
+}
+
+.fizetetlen {
+    background-color: #ffdad9 !important;
+    cursor: pointer;
+    color: #ff5049;
+}
+
+.fizetetlen .tetel__szazalek {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+}
+.fizetetlen:hover .tetel__leiras {
+    font-weight: 900;
+}
+
+/* ////////////////////////////////// */
+
+.selected-wrapper {
+}
+
+.selected-wrapper.hide {
+    display: none;
+}
+
+.selected-wrapper button {
+    background: none;
+    border: none;
+}
+.selected-wrapper button i {
+    font-size: 22px;
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+.selected-item {
+}
+.selected-item.title {
+}
+.selected-item.value {
+    width: 70px;
+    margin-right: 65px;
+}
+
+.fa-check-circle {
+    color: #28b9b5;
+}
+.fa-trash-alt {
+    color: #ff5049;
+}
+.fa-times-circle {
+    color: #555;
+}
+
+
+
+/**********************************************
+*** MODAL
+**********************************************/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .modal-content>h4{
+      text-align: center;
+      margin-bottom: 25px;
+    
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #f7f7f7;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #555;
+    width: 30%; /* Could be more or less, depending on screen size */
+
+}
+  .modal-button-wrapper{
+      position: relative;
+      left: 30%;
+  }
+  
+
+  .modal-select{
+
+  }
+  
+  /* The Close Button */
+  .modal-close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+    
+  

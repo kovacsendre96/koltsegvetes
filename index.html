@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600" rel="stylesheet" type="text/css">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <title>Költségvetés - JavaScript Projekt</title>
+    <script src="https://kit.fontawesome.com/d0e4192253.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="top">
+        <div class="koltsegvetes">
+            <div class="koltsegvetes__cim">
+                Költségvetés időszaka - <span class="koltsegvetes__cim--honap"></span>:
+            </div>
+
+            <div class="koltsegvetes__ertek">0 Ft</div>
+
+            <div class="koltsegvetes__bevetelek clearfix">
+                <div class="koltsegvetes__bevetelek--szoveg">Bevételek</div>
+                <div class="right">
+                    <div class="koltsegvetes__bevetelek--ertek">-</div>
+                    <div class="koltsegvetes__bevetelek--szazalek">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="koltsegvetes__kiadasok clearfix">
+                <div class="koltsegvetes__kiadasok--szoveg">Kiadások</div>
+                <div class="right clearfix">
+                    <div class="koltsegvetes__kiadasok--ertek">-</div>
+                    <div class="koltsegvetes__kiadasok--szazalek">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="bottom">
+        <div class="hozzaad">
+            <div class="hozzaad__kontener">
+              <!--   <div class="new-month-wrapper">
+                    <button class="new-month"><i class="fas fa-plus"></i></button>
+                    <select class="months" id="months">
+                
+                    </select>
+                </div>
+ -->
+                <select class="hozzaad__tipus" id="hozzaad__tipus">
+                    <option value="bevetel" selected>+</option>
+                    <option value="kiadas">-</option>
+                </select>
+                <input id="hozzaad__leiras" type="text" class="hozzaad__leiras" placeholder="Leírás hozzáadása">
+
+                <input id="hozzaad__ertek" type="number" class="hozzaad__ertek" placeholder="Érték">
+                <button id="hozzaad__gomb" class="hozzaad__gomb"><i class="ion-ios-checkmark-outline"></i></button>
+
+            </div>
+        </div>
+
+        <div class="kontener clearfix">
+            <div id="bevetelek" class="bevetelek">
+                <h2 class="bevetelek__cim">Bevételek</h2>
+                <div class="bevetelek__lista">
+                    <!--  -->
+
+                    <!--  -->
+                </div>
+            </div>
+
+
+
+            <div id="kiadasok" class="kiadasok">
+                <h2 class="kiadasok__cim">Kiadások</h2>
+
+                <div class="kiadasok__lista"></div>
+            </div>
+        </div>
+    </div>
+
+                <!-- MODAL -->
+   <!--  <div id="myModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h4>Új hónap kezdése</h4>
+            <div class="modal-button-wrapper">
+                <select class="modal-select" name="" id="">
+                    <option value="január">Január</option>
+                    <option value="február">Február</option>
+                    <option value="március">Március</option>
+                    <option value="április">Április</option>
+                    <option value="május">Május</option>
+                    <option value="június">Június</option>
+                    <option value="július">Július</option>
+                    <option value="augusztus">Augusztus</option>
+                    <option value="szeptember">Szeptember</option>
+                    <option value="október">Október</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
+                </select>
+                <button class="modal-accept"><i class="ion-ios-checkmark-outline"></i></button>
+            </div>
+        </div>
+    </div> -->
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
