@@ -158,7 +158,7 @@ var budgetController = (function () {
 
             index = idTomb.indexOf(id);
 
-  
+
 
             if (index !== -1) {
 
@@ -362,15 +362,15 @@ var surfaceController = (function () {
         },
         // select input
         aktualisHonapMegjelenites: function () {
-      /*       var select, datas, selectedOption;
-
-            select = document.querySelector(DOMelements.month);
-            datas = budgetController.getDatas();
-            option = document.querySelectorAll(DOMelements.monthsOption);
-            for(let i =0;i<option.length;i++){
-                selectedOption = (Array.from(option).filter(f => f.value === datas.honap[i]));
-                selectedOption[i].setAttribute('selected', '');
-            } */
+            /*       var select, datas, selectedOption;
+      
+                  select = document.querySelector(DOMelements.month);
+                  datas = budgetController.getDatas();
+                  option = document.querySelectorAll(DOMelements.monthsOption);
+                  for(let i =0;i<option.length;i++){
+                      selectedOption = (Array.from(option).filter(f => f.value === datas.honap[i]));
+                      selectedOption[i].setAttribute('selected', '');
+                  } */
         }
     }
 })();
@@ -400,24 +400,24 @@ var mainController = (function (budgetController, surfaceController) {
 
 
 
-
-    var createOption = function () {
-        var dom, select, option, options, datas, proba;
-        datas = budgetController.getDatas();
-        dom = surfaceController.getDOMelements();
-        select = document.querySelector(dom.month);
-
-
-
-        if (select.children.length < 1) {
-            option = document.createElement('option');
-            option.setAttribute('class', 'months-option')
-            option.setAttribute('value', budgetController.aktualisHonap());
-            option.innerHTML = budgetController.aktualisHonap();
-            select.appendChild(option);
-          
-        }
-    }
+    /* 
+        var createOption = function () {
+            var dom, select, option, options, datas, proba;
+            datas = budgetController.getDatas();
+            dom = surfaceController.getDOMelements();
+            select = document.querySelector(dom.month);
+    
+    
+    
+            if (select.children.length < 1) {
+                option = document.createElement('option');
+                option.setAttribute('class', 'months-option')
+                option.setAttribute('value', budgetController.aktualisHonap());
+                option.innerHTML = budgetController.aktualisHonap();
+                select.appendChild(option);
+              
+            }
+        } */
 
 
     var esemenykezelokBeallit = function () {
@@ -436,9 +436,9 @@ var mainController = (function (budgetController, surfaceController) {
 
         });
 
-       document.querySelector(DOM.kontener).addEventListener('click', onClick);
+        document.querySelector(DOM.kontener).addEventListener('click', onClick);
 
-      /*   document.querySelector(DOM.modalBtn).addEventListener('click', modalFnc);  */
+        /*   document.querySelector(DOM.modalBtn).addEventListener('click', modalFnc);  */
 
 
 
@@ -451,7 +451,7 @@ var mainController = (function (budgetController, surfaceController) {
         // 1. bevitt adatok megszerzése
         input = surfaceController.getInput();
 
-        if (input.title !== "" && !isNaN(input.value) && input.value > 0) {
+        if (input.title.trim('') !== "" && !isNaN(input.value) && input.value > 0) {
 
 
 
@@ -469,6 +469,37 @@ var mainController = (function (budgetController, surfaceController) {
             osszegFrissitese();
         }
 
+        else {
+            var dom, modal, datas, heading;
+            dom = surfaceController.getDOMelements();
+            datas = budgetController.getDatas();
+            modal = document.querySelector(dom.modal);
+            heading = modal.children[0].children[1];
+
+            modal.style.display = "block";
+
+            document.querySelector(dom.modalClose).addEventListener('click', () => {
+
+                modal.style.display = "none";
+            })
+        }
+
+        if (isNaN(input.value)) {
+            heading.textContent = "Kérem töltse ki az Érték mezőt!"
+        }
+
+        if (input.value < 0) {
+            heading.textContent = "Az érték mezőnek 0-nál nagyobbnak kell lennie.";
+        }
+
+        if (input.title.trim('') === "") {
+            heading.textContent = "Kérem töltse ki a Leírás mezőt!";
+        }
+
+        if (isNaN(input.value) && input.title.trim('') === "") {
+
+            heading.textContent = "Kérem töltse ki a Leírás és érték mezőt!";
+        }
 
     }
 
@@ -506,7 +537,7 @@ var mainController = (function (budgetController, surfaceController) {
                 id = parseInt(splitId[1]);
 
             }
-      
+
 
             // 1. tétel törlése az adat obj-ból
             budgetController.teteTorol(type, id);
@@ -557,50 +588,48 @@ var mainController = (function (budgetController, surfaceController) {
 
             osszegFrissitese();
             frissites();
-
         }
-
     }
-    var modalFnc = function () {
-        var dom, modal, datas, modalSelect;
-        dom = surfaceController.getDOMelements();
-        datas = budgetController.getDatas();
-
-        modal = document.querySelector(dom.modal)
-        modal.style.display = "block";
-
-
-
-
-        document.querySelector(dom.modalClose).addEventListener('click', () => {
-
-            modal.style.display = "none";
-
-        })
-        document.querySelector(dom.modalAccept).addEventListener('click', (e) => {
-
-            var dom, select, options, datas;
-            datas = budgetController.getDatas();
-            dom = surfaceController.getDOMelements();
-            select = document.querySelector(dom.month);
-            modalSelect = document.querySelector(dom.modalSelect);
-           
- 
-
-            datas.honap.push(modalSelect.value);
-            modal.style.display = "none";
-            options=datas.honap.map(m=>
-                `<option>${m}</option>`
-                )
-             
-            select.innerHTML=options;
-      
-        })
-    }
+    /*        var modalFnc = function () {
+               var dom, modal, datas, modalSelect;
+               dom = surfaceController.getDOMelements();
+               datas = budgetController.getDatas();
+   
+               modal = document.querySelector(dom.modal)
+               modal.style.display = "block";
+   
+   
+   
+   
+               document.querySelector(dom.modalClose).addEventListener('click', () => {
+   
+                   modal.style.display = "none";
+   
+               })
+               document.querySelector(dom.modalAccept).addEventListener('click', (e) => {
+   
+                   var dom, select, options, datas;
+                   datas = budgetController.getDatas();
+                   dom = surfaceController.getDOMelements();
+                   select = document.querySelector(dom.month);
+                   modalSelect = document.querySelector(dom.modalSelect);
+   
+   
+   
+                   datas.honap.push(modalSelect.value);
+                   modal.style.display = "none";
+                   options = datas.honap.map(m =>
+                       `<option>${m}</option>`
+                   )
+   
+                   select.innerHTML = options;
+   
+               })
+           } */
 
     return {
         init: function () {
-       /*      createOption() */
+            /*      createOption() */
             surfaceController.ktgMegjelenites({
                 koltsegvetes: 0,
                 osszesBevetel: 0,
