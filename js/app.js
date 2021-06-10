@@ -248,6 +248,7 @@ var surfaceController = (function () {
         modalAccept: '.modal-accept',
         month: '.months',
         monthsOption: '.months-option',
+        idoszak:'.koltsegvetes__cim--honap',
 
     };
 
@@ -360,17 +361,10 @@ var surfaceController = (function () {
 
             }
         },
-        // select input
+   
         aktualisHonapMegjelenites: function () {
-            /*       var select, datas, selectedOption;
-      
-                  select = document.querySelector(DOMelements.month);
-                  datas = budgetController.getDatas();
-                  option = document.querySelectorAll(DOMelements.monthsOption);
-                  for(let i =0;i<option.length;i++){
-                      selectedOption = (Array.from(option).filter(f => f.value === datas.honap[i]));
-                      selectedOption[i].setAttribute('selected', '');
-                  } */
+            const datas=budgetController.getDatas();
+            document.querySelector(DOMelements.idoszak).innerHTML=datas.honap[0];
         }
     }
 })();
